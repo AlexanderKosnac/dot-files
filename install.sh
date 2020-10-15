@@ -31,9 +31,9 @@ for d in $dirs; do
 done
 
 # link the files
-files="$(find "${dot_files_directory}" -type f)"
+files="$(cd "${dot_files_directory}"; find . -type f)"
 for f in $files; do
-    ln -si ${ln_params} ${verbose_param} "$(realpath "$f")" "${HOME}"
+    ln -si ${ln_params} ${verbose_param} "$(realpath "${dot_files_directory}/${f}")" "${HOME}/${f}"
 done
 
 echo "installation done"
