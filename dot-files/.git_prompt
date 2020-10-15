@@ -1,0 +1,14 @@
+download_link="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+cached_file="${HOME}/.cache/git-prompt.sh"
+
+# download the file if it isn't already available
+if ! [ -f "$cached_file" ]; then
+    echo "No cached git-prompt file could be found at ${cached_file}. Downloading now:"
+    curl "$download_link" > "$cached_file"
+fi
+
+source "$cached_file"
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
