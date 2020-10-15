@@ -1,6 +1,10 @@
 # general binary references
 python_3_8="/usr/bin/python3.8"
 
+# paths
+## directory for all kinds of scripts
+scripts_dir="${HOME}/scripts/"
+
 # program exports
 export LESS='-IRPslines %lt-%lb/%L; page %d/%D of ?f%f:stdin.?e (END):.'
 export GREP_OPTIONS='--color=always'
