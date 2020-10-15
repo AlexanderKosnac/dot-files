@@ -1,10 +1,12 @@
 #!/bin/bash
 
-source .bash_aliases
-source .bash_exports
+export bashrc_sources="${HOME}/.bashrc-sources/"
 
-source .git_prompt
-#source .lsf_aliases
+source "${bashrc_sources}/.bash_aliases"
+source "${bashrc_sources}/.bash_exports"
+
+source "${bashrc_sources}/.git_prompt"
+#source "${bashrc_sources}/.lsf_aliases"
 
 # Prompt
 def="$(color-rgb-fg 250 250 250 40 40 40)"
