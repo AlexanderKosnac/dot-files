@@ -7,7 +7,6 @@ scripts_dir="${bashrc_sources}/scripts/"
 
 # program exports
 export LESS='-IRPslines %lt-%lb/%L; page %d/%D of ?f%f:stdin.?e (END):.'
-export GREP_OPTIONS='--color=always'
 
 # colors
 ## the most perfect stackoverflow answer on the topic of colors:
