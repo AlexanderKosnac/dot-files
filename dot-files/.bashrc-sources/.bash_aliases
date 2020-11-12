@@ -13,6 +13,10 @@ alias l='ll'
 alias grep="grep --color -Ei"
 
 
+# git
+alias git-root="cd \$(git root)"
+
+
 # convenience
 alias timestamp="date '+%Y%m%d%H%M%S'"
 alias time="date '+%H:%M:%S'"
