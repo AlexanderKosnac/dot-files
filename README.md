@@ -16,7 +16,6 @@ Available parameters are:
 
 * `-f` force:
   * force the creation of links via `ln`
-
 * `-v` verbose:
   * use the verbose flag for `ln` and `mkdir`
 
