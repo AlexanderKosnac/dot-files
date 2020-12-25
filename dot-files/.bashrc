@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
 export bashrc_sources="${HOME}/.bashrc-sources/"
 
 source "${bashrc_sources}/.bash_aliases"
