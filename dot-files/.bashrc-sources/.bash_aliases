@@ -10,8 +10,9 @@ alias l='ll'
 
 
 # grep
-alias grep="grep --color -Ei"
-
+alias grep="grep --color=auto -Ei"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # git
 alias git-root="cd \$(git root)"
