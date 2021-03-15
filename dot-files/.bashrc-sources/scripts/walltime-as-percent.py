@@ -7,16 +7,16 @@ import json
 
 NA = "N/A"
 
-def minutesAsHoursAndMinutes(minutes):
+def minutes_as_hours_and_minutes(minutes):
     hours = int(minutes / 60)
     minutesOfHour = int(minutes % 60)
     return { "hours": hours, "minutes": minutesOfHour }
 
 
-def minutesAsHoursAndMinutesAsString(minutes, hour_padding=3):
+def minutes_as_hours_and_minutes_as_string(minutes, hour_padding=3):
     if minutes == None:
         return NA
-    res = minutesAsHoursAndMinutes(minutes)
+    res = minutes_as_hours_and_minutes(minutes)
     return '{h: >{hpad}}:{m:0>2}'.format(hpad=hour_padding, h=res['hours'], m=res['minutes'])
 
 
@@ -40,7 +40,7 @@ for bjob in bjobs_json["RECORDS"]:
         minutes_of_hour_left = int(values[1])
         time_left = hours_left * 60 + minutes_of_hour_left
 
-    walltime_left_in_hours_and_minutes = minutesAsHoursAndMinutesAsString(time_left)
+    walltime_left_in_hours_and_minutes = minutes_as_hours_and_minutes_as_string(time_left)
 
     raw_time_available = bjob["RUNTIMELIMIT"]
     try:
@@ -48,7 +48,7 @@ for bjob in bjobs_json["RECORDS"]:
     except ValueError:
         time_available = None
 
-    one_percent_of_walltime = minutesAsHoursAndMinutesAsString(int(time_available / 100), 0)
+    one_percent_of_walltime = minutes_as_hours_and_minutes_as_string(int(time_available / 100), 0)
 
     walltime_left_percent = NA
     if time_left and time_available:
@@ -56,7 +56,7 @@ for bjob in bjobs_json["RECORDS"]:
 
     raw_run_time = bjob["RUN_TIME"]
     run_time_in_seconds = int(raw_run_time.split(" ")[0])
-    run_time = minutesAsHoursAndMinutesAsString(run_time_in_seconds/60)
+    run_time = minutes_as_hours_and_minutes_as_string(run_time_in_seconds/60)
 
     #line_content = output_format.format(bjob["JOBID"], bjob["STAT"], walltime_left_percent, walltime_left_in_hours_and_minutes, one_percent_of_walltime)
     sort_key = walltime_left_percent
