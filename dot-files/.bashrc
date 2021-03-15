@@ -14,6 +14,11 @@ source "${bashrc_sources}/.bash_exports"
 source "${bashrc_sources}/.git_prompt"
 #source "${bashrc_sources}/.lsf_aliases"
 
+# source all the scripts from this directory
+for f in "${bashrc_sources}/to-source/*"; do
+    source $f
+done
+
 # Prompt
 def="$(color-rgb-fg 250 250 250 40 40 40)"
 blue="$(color-rgb-fg 0 133 251)"
