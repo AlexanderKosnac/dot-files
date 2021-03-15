@@ -7,6 +7,7 @@ case $- in
 esac
 
 export bashrc_sources="${HOME}/.bashrc-sources/"
+export file_template_dir="${HOME}/file-templates/"
 
 source "${bashrc_sources}/.bash_aliases"
 source "${bashrc_sources}/.bash_exports"
