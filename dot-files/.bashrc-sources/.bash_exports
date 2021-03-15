@@ -8,9 +8,6 @@ python_3_8="/usr/bin/python3.8"
 ## directory for all kinds of scripts
 scripts_dir="${bashrc_sources}/scripts/"
 
-# program exports
-export LESS='-IRPslines %lt-%lb/%L; page %d/%D of ?f%f:stdin.?e (END):.'
-
 # view helper functions
 view-json() {
 	$python_3_8 -m json.tool $1 | less
