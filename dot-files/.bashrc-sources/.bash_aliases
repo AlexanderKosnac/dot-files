@@ -8,6 +8,9 @@ alias ls="ls --color=always"
 alias ll='ls -la'
 alias l='ll'
 
+# tree
+alias tree="tree -C"
+
 
 # grep
 alias grep="grep --color=auto -Ei"
