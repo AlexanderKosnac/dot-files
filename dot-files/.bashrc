@@ -15,8 +15,6 @@ source "${bashrc_sources}/.bash_exports"
 source "${bashrc_sources}/.git_prompt"
 #source "${bashrc_sources}/.lsf_aliases"
 
-source "${HOME}/.cargo/env"
-
 # source all the scripts from this directory
 for f in ${bashrc_sources}/to-source/*; do
     source $f
