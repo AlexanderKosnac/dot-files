@@ -23,7 +23,7 @@ alias git-root="cd \$(git root)"
 
 # convenience
 alias timestamp="date '+%Y%m%d%H%M%S'"
-alias time="date '+%H:%M:%S'"
+alias time_hh_mm_ss="date '+%H:%M:%S'"
 alias untar="tar -zxvf"
 
 
