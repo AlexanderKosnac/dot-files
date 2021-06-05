@@ -5,3 +5,6 @@ FILE="${HOME}/.cargo/env"
 
 export PATH=${HOME}/.nimble/bin:$PATH
 
+nimcache="${HOME}/.nimcache"
+mkdir -p $nimcache
+export nimcache
