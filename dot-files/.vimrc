@@ -16,3 +16,6 @@ syntax on
 " show line and column number (ruler)
 set statusline+=%F\ %l\:%c
 set ruler
+
+set number
+
