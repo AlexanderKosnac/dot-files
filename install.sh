@@ -33,7 +33,18 @@ done
 # link the files
 files="$(cd "${dot_files_directory}"; find . -type f)"
 for f in $files; do
-    ln -si ${ln_params} ${verbose_param} "$(realpath "${dot_files_directory}/${f}")" "${HOME}/${f}"
+    source="$(realpath "${dot_files_directory}/${f}")"
+    target="${HOME}/${f}"
+
+    md5_source=($(md5sum $source))
+    md5_target=($(md5sum $target))
+
+    if [ "$md5_source" != "$md5_target" ]; then
+        ln -si ${ln_params} ${verbose_param} "$source" "$target"
+        echo "$source -> $target"
+    else
+        echo "already installed: '$(basename $source)'"
+    fi
 done
 
 echo "installation done"
