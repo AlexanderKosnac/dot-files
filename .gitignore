@@ -1,0 +1,9 @@
+# build directories
+build/
+
+# temporary files
+## vim
+*.swp
+
+## ghostwrite
+*.md.backup
