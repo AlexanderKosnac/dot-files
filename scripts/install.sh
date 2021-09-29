@@ -1,4 +1,4 @@
-root_directory="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
+source scripts/shared.sh
 
 ln_params=""
 verbose_param=""
@@ -22,22 +22,22 @@ do
     esac
 done
 
-dot_files_directory="${root_directory}/dot-files/"
-
 # directories should be actually created instead of linked
-dirs="$(cd "${dot_files_directory}"; find . -type d)"
-for d in $dirs; do
+for d in $DIRS; do
     mkdir -p ${verbose_param} "${HOME}/${d}"
 done
 
 # link the files
-files="$(cd "${dot_files_directory}"; find . -type f)"
-for f in $files; do
-    source="$(realpath "${dot_files_directory}/${f}")"
+for f in $FILES; do
+    source="$(realpath "${DOT_FILES_DIRECTORY}/${f}")"
     target="${HOME}/${f}"
 
     md5_source=($(md5sum $source))
-    md5_target=($(md5sum $target))
+    md5_target="none"
+    if test -f "$target"; then
+        md5_target=($(md5sum $target))
+    fi
+
 
     if [ "$md5_source" != "$md5_target" ]; then
         ln -si ${ln_params} ${verbose_param} "$source" "$target"
