@@ -1,25 +1,13 @@
+# general binary references
+python_3_8="/usr/bin/python3.8"
+
 export PATH="${PATH}:/snap/bin"
 export PATH="${PATH}:${HOME}/bin"
 
-# general binary references
-python_3_8="/usr/bin/python3.8"
 
 # paths
 ## directory for all kinds of scripts
 scripts_dir="${bashrc_sources}/scripts/"
-
-# view helper functions
-view-json() {
-	$python_3_8 -m json.tool $1 | less
-}
-
-view-tsv() {
-    column -t "$1" | less -S
-}
-
-view-pdf() {
-	/usr/bin/evince $1 > /dev/null
-}
 
 # math and calculation helper functions
 bytes-to-human() {

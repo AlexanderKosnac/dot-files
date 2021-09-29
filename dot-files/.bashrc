@@ -9,8 +9,8 @@ esac
 export bashrc_sources="${HOME}/.bashrc-sources/"
 export file_template_dir="${HOME}/file-templates/"
 
-source "${bashrc_sources}/.bash_aliases"
-source "${bashrc_sources}/.bash_exports"
+source "${bashrc_sources}/.exports"
+source "${bashrc_sources}/.aliases"
 
 # source all the scripts from this directory
 for f in ${bashrc_sources}/to-source/*; do
