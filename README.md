@@ -10,12 +10,20 @@ repository, while files always redirect to the repository.
 
 ## Usage
 
-Simply execute the script `install.sh` from anywhere.
+Clone the repository into any directory and execute `make install`. Done.
 
-Available parameters are:
 
-* `-f` force:
-  * force the creation of links via `ln`
-* `-v` verbose:
-  * use the verbose flag for `ln` and `mkdir`
+## Makefile
+
+### `install`
+
+Installs the files into the home directory.
+
+### `clean`
+
+Removes all links in the home repository pointing to files in this repository.
+
+### `all` (default)
+
+First executes `clean` and then `install`.
 
