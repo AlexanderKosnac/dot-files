@@ -12,9 +12,6 @@ export file_template_dir="${HOME}/file-templates/"
 source "${bashrc_sources}/.bash_aliases"
 source "${bashrc_sources}/.bash_exports"
 
-source "${bashrc_sources}/.git_prompt"
-#source "${bashrc_sources}/.lsf_aliases"
-
 # source all the scripts from this directory
 for f in ${bashrc_sources}/to-source/*; do
     source $f
