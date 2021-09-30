@@ -14,8 +14,6 @@ p_time="${gray}\t${def}"
 p_colon="${def}:${def}"
 p_pwd="${blue}\W${def}"
 
-function __setprompt
-{
 # Exit codes are interpreted as layed out here:
 # https://tldp.org/LDP/abs/html/exitcodes.html
 function exit_code_to_text {
@@ -56,28 +54,42 @@ function prompt_exit_code {
     prompt+="${S_BOLD}[$ec_form]${S_BOLD_N}${def}"
     echo -en "$prompt"
 }
+
+function __setprompt {
     ec=$?;  # has to be at top
-    PS1=""  # clear PS1
+    prompt=""  # clear PS1
 
     # user and host
-    PS1+="${p_user}${p_at}${p_host} "
+    prompt+="${p_user}${p_at}${p_host} "
+
+    # exit code of last command
+    prompt+="$(prompt_exit_code $ec) "
 
     # timestamp
-    PS1+="${p_time}"
+    prompt+="${p_time}"
 
-    PS1+="${p_colon} "
-    PS1+="${p_pwd}"
-    PS1+="${def}"
-    PS1+="\n"
-    PS1+="\$"
+    prompt+="${p_colon} "
+    prompt+="${p_pwd}"
+    prompt+="${def} "
 
-	# PS2 for continuing multiline commands
+    # the git-prompt, but used this waz it can not output color
+    #prompt+="$(__git_ps1)"
+    #prompt+="\n\$ "
+
+    # print out prompt so we can use it with __git_ps1
+    # git-prompt does not allow use of colors
+    echo "$prompt"
+
+    # PS1 for default prompt
+    #PS1="$prompt"
+
+	# PS2 for prompt when writing multiline commands
 	#PS2=""
 
-	# PS3 for entering a number choice in scripts
+	# PS3 for prompt when asking for input
 	#PS3=""
 
-	# PS4 for tracing in debug mode
+	# PS4 for prompt when tracing script in debug mode
 	#PS4=""
 }
-PROMPT_COMMAND='__setprompt'
+export PROMPT_COMMAND='__git_ps1 "$(__setprompt)" "\n\$ "'
