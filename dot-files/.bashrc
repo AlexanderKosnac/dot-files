@@ -17,17 +17,6 @@ for f in ${bashrc_sources}/to-source/*; do
     source $f
 done
 
-# bash history
-## don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-## append to the history file, don't overwrite it
-shopt -s histappend
-
-## for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-
 # check and update terminal window size after each command
 shopt -s checkwinsize
 

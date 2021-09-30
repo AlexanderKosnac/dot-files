@@ -38,3 +38,4 @@ set_ssh_alias () {
     alias "ssh_$1"="$cmd"
 }
 # Example:  set_ssh_alias "example-alias" "user@host"
+
