@@ -55,7 +55,7 @@ function prompt_exit_code {
 }
 
 function relative_root {
-    repo_path="$(git rev-parse --show-prefix)"
+    repo_path="$(git rev-parse --show-prefix 2> /dev/null)"
     is_git="$?"
     if [ $is_git = 0 ]; then
         toplevel="$(basename $(git rev-parse --show-toplevel))"
