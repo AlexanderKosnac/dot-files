@@ -1,3 +1,4 @@
+#!/bin/bash
 
 function random_char() {
     if [ $# -ne 1 ]; then

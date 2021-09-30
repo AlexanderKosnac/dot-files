@@ -1,3 +1,5 @@
+#!/bin/bash
+
 view-json() {
     $python_3_8 -m json.tool $1 | less
 }

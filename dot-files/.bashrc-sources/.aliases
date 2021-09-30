@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # directories
 alias data="cd /data/${USER}"
 alias usb="cd /run/media/${USER}/"

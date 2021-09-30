@@ -1,3 +1,5 @@
+#!/bin/bash
+
 FILE="${HOME}/.cargo/env"
 # Repository: https://github.com/dom96/choosenim
 # Install via:

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Automatically parses a makefile and provides autocompletion.
 # https://stackoverflow.com/a/38415982/6921511
 

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 download_link="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
 
 cache_directory="${HOME}/.cache/"

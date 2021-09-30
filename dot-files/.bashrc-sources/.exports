@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # general binary references
 python_3_8="/usr/bin/python3.8"
 

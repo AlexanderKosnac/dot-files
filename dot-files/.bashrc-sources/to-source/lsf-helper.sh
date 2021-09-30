@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # lsf cluster aliases
 base_format="jobid:7 stat:5"
 first_host="first_host:16"

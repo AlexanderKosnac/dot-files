@@ -1,3 +1,5 @@
+#!/bin/bash
+
 bytes-to-human() {
     b=${1:-0}; d=''; s=0; S=(Bytes {K,M,G,T,P,E,Z,Y}iB)
     while ((b > 1024)); do
