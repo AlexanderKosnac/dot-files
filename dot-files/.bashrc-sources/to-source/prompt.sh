@@ -72,15 +72,16 @@ function __setprompt {
     # user and host
     prompt+="${p_user}${p_at}${p_host} "
 
-    # exit code of last command
-    prompt+="$(prompt_exit_code $ec) "
-
     # timestamp
-    prompt+="${p_time}"
+    prompt+="${p_time} "
+
+    # exit code of last command
+    prompt+="$(prompt_exit_code $ec)"
 
     prompt+="${p_colon} "
+
     prompt+="${blue}$(relative_root)${def}"
-    prompt+="${def} "
+    prompt+="${def}"
 
     # the git-prompt, but used this waz it can not output color
     #prompt+="$(__git_ps1)"
