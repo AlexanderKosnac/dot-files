@@ -9,4 +9,3 @@ install:
 	bash $(SCRIPTS_DIR)/install.sh
 
 all: clean install
-

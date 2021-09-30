@@ -26,4 +26,3 @@ Removes all links in the home repository pointing to files in this repository.
 ### `all` (default)
 
 First executes `clean` and then `install`.
-

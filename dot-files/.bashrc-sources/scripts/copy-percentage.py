@@ -18,4 +18,3 @@ if file_size_from is not None and file_size_to is not None:
     percentage = "{0:.0%}".format(file_size_to/file_size_from)
 
 print(str(percentage) + " (" + str(file_size_to) + "/" + str(file_size_from) + ")")
-

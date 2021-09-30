@@ -11,4 +11,3 @@ view-tsv() {
 view-pdf() {
     /usr/bin/evince $1 > /dev/null
 }
-

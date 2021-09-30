@@ -22,4 +22,3 @@ set number
 " set tab width
 set tabstop=4
 set shiftwidth=4
-

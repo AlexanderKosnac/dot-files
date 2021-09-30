@@ -5,4 +5,3 @@ function create_file_from_template() {
 }
 
 alias "create-from-template-gitignore"="create_file_from_template 'gitignore' '.gitignore'"
-

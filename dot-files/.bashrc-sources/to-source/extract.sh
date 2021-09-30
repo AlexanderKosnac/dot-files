@@ -19,7 +19,7 @@ extract () {
             return 1
         fi
         case "${n%,}" in
-            *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar) 
+            *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
                 tar xvf "$n";;
             *.lzma)
                 unlzma ./"$n";;
@@ -58,4 +58,3 @@ extract () {
 }
 
 IFS=$SAVEIFS
-
