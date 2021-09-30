@@ -4,7 +4,6 @@
 alias data="cd /data/${USER}"
 alias usb="cd /run/media/${USER}/"
 
-
 # ls
 alias ls="ls --color=always"
 alias ll='ls -la'
@@ -12,7 +11,6 @@ alias l='ll'
 
 # tree
 alias tree="tree -C"
-
 
 # grep
 alias grep="grep --color=auto -Ei"
@@ -22,15 +20,12 @@ alias egrep="egrep --color=auto"
 # git
 alias git-root="cd \$(git root)"
 
-
 # convenience
 alias timestamp="date '+%Y%m%d%H%M%S'"
 alias time_hh_mm_ss="date '+%H:%M:%S'"
 alias untar="tar -zxvf"
 
-
 # ssh
-
 # creates two aliases: one with the normal name and one with an "ssh_" prefix. This way you
 # can simply tab complete "ssh_" to see what exists.
 # $1: alias name;  $2: user@host
