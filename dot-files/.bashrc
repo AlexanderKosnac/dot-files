@@ -6,6 +6,11 @@ case $- in
       *) return;;
 esac
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    source /etc/bashrc
+fi
+
 export bashrc_sources="${HOME}/.bashrc-sources/"
 export file_template_dir="${HOME}/file-templates/"
 
