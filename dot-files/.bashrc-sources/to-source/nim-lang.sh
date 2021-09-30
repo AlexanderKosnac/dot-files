@@ -10,3 +10,4 @@ export PATH=${HOME}/.nimble/bin:$PATH
 nimcache="${HOME}/.nimcache"
 mkdir -p $nimcache
 export nimcache
+

@@ -73,3 +73,4 @@ content.sort(key = sort_function)
 print(header)
 for line_content in content:
     print(output_format.format(*line_content[1:]))
+

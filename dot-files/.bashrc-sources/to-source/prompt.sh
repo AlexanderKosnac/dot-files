@@ -1,3 +1,5 @@
+#!/bin/bash
+
 def="$(color-rgb-fg 250 250 250 40 40 40)"
 blue="$(color-rgb-fg 0 133 251)"
 yellow="$(color-rgb-fg 255 208 0)"

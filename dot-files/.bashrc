@@ -23,3 +23,4 @@ shopt -s checkwinsize
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/data/${USER}/sdkman"
 [[ -s "/data/${USER}/sdkman/bin/sdkman-init.sh" ]] && source "/data/${USER}/sdkman/bin/sdkman-init.sh"
+

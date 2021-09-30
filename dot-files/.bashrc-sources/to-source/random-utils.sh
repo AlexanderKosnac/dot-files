@@ -34,3 +34,4 @@ function random_text() {
         echo ""
     done
 }
+

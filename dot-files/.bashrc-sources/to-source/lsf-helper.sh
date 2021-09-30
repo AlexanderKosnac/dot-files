@@ -47,3 +47,4 @@ lsload-big() {
 list-walltime-percentage() {
     bjobs -json -ro 'jobid stat run_time time_left runtimelimit name' "$@" | $PYTHON "${SCRIPTS_DIR}/walltime-as-percent.py"
 }
+
