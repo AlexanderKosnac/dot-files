@@ -12,7 +12,6 @@ p_at="${def}@${def}"
 p_host="${green}\H${def}"
 p_time="${gray}\t${def}"
 p_colon="${def}:${def}"
-p_pwd="${blue}\W${def}"
 
 # Exit codes are interpreted as layed out here:
 # https://tldp.org/LDP/abs/html/exitcodes.html
@@ -55,6 +54,17 @@ function prompt_exit_code {
     echo -en "$prompt"
 }
 
+function relative_root {
+    repo_path="$(git rev-parse --show-prefix)"
+    is_git="$?"
+    if [ $is_git = 0 ]; then
+        toplevel="$(basename $(git rev-parse --show-toplevel))"
+        echo "$toplevel/$repo_path"
+    else
+        pwd
+    fi
+}
+
 function __setprompt {
     ec=$?;  # has to be at top
     prompt=""  # clear PS1
@@ -69,7 +79,7 @@ function __setprompt {
     prompt+="${p_time}"
 
     prompt+="${p_colon} "
-    prompt+="${p_pwd}"
+    prompt+="${blue}$(relative_root)${def}"
     prompt+="${def} "
 
     # the git-prompt, but used this waz it can not output color
