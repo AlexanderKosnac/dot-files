@@ -94,13 +94,13 @@ function __setprompt {
     # PS1 for default prompt
     #PS1="$prompt"
 
-	# PS2 for prompt when writing multiline commands
-	#PS2=""
+    # PS2 for prompt when writing multiline commands
+    #PS2=""
 
-	# PS3 for prompt when asking for input
-	#PS3=""
+    # PS3 for prompt when asking for input
+    #PS3=""
 
-	# PS4 for prompt when tracing script in debug mode
-	#PS4=""
+    # PS4 for prompt when tracing script in debug mode
+    #PS4=""
 }
 export PROMPT_COMMAND='__git_ps1 "$(__setprompt)" "\n\$ "'
