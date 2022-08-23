@@ -1,5 +1,13 @@
 #!/bin/bash
 
+export A_GIT_PROMPT_TYPE="git-prompt"
+
+git_prompt_type=(
+    "basic"
+    "git-prompt"
+    "with git branch"
+)
+
 def="${S_RESET}"
 blue="$(color-rgb-fg 0 133 251)"
 yellow="$(color-rgb-fg 255 208 0)"
@@ -65,6 +73,18 @@ function relative_root {
     fi
 }
 
+function a_prompt {
+    for i in ${!git_prompt_type[@]}; do
+        echo "$((i+1)). ${git_prompt_type[$i]}"
+    done
+    read -p "Select prompt type: " -r num
+    case $num in
+        1 | 2 | 3) export A_GIT_PROMPT_TYPE="${git_prompt_type[$((num-1))]}";;
+        *) echo "Unhandeled prompt type '${var}'." > /dev/stderr;;
+    esac
+    __export_prompt
+}
+
 function __setprompt {
     ec=$?;  # has to be at top
     prompt=""  # clear PS1
@@ -83,10 +103,6 @@ function __setprompt {
     prompt+="${blue}$(relative_root)${def}"
     prompt+="${def}"
 
-    # the git-prompt, but used this waz it can not output color
-    #prompt+="$(__git_ps1)"
-    #prompt+="\n\$ "
-
     # print out prompt so we can use it with __git_ps1
     # git-prompt does not allow use of colors
     echo "$prompt"
@@ -103,4 +119,31 @@ function __setprompt {
     # PS4 for prompt when tracing script in debug mode
     #PS4=""
 }
-export PROMPT_COMMAND='__git_ps1 "$(__setprompt)" "\n\$ "'
+
+function __prompt_basic {
+    PS1="$(__setprompt)\n\$ "
+    export PROMPT_COMMAND=''
+}
+
+function __prompt_git-prompt {
+    PS1="$(__setprompt)\n\$ "
+    export PROMPT_COMMAND='__git_ps1 "$(__setprompt)" "\n\$ "'
+}
+
+function __prompt_with_git_branch {
+    repo_path="$(git rev-parse --show-prefix 2> /dev/null)"
+    is_git="$?"
+    git_branch_prompt=""
+    if [ $is_git = 0 ]; then
+        git_branch="$(git rev-parse --abbrev-ref HEAD)"
+        git_branch_prompt="[${git_branch}]"
+    fi
+    PS1="$(__setprompt) $git_branch_prompt\n\$ "
+    export PROMPT_COMMAND=''
+}
+
+function __export_prompt {
+    $(echo "__prompt_$A_GIT_PROMPT_TYPE" | tr " " "_")
+}
+
+__export_prompt
