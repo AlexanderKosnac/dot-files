@@ -1,4 +1,4 @@
-" makes it so you some keys are more intuitive to common texteditors (arrow keys, backspace, ...)
+" makes it so some keys are more intuitive (arrow keys, backspace, ...)
 set nocompatible
 
 " allow backspacing over everything in insert mode
@@ -10,7 +10,9 @@ set wildmode=longest,list,full
 set wildmenu
 
 " set a colorscheme you can read on a white-on-black terminal
-colorscheme elflord
+colorscheme evening
+
+filetype plugin on
 syntax on
 
 " show line and column number (ruler)
@@ -18,6 +20,8 @@ set statusline+=%F\ %l\:%c
 set ruler
 
 set number
+
+set mouse=a
 
 " set tab width
 set tabstop=4
