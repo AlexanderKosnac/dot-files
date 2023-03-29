@@ -4,6 +4,7 @@ build/
 # temporary files
 ## vim
 *.swp
+*.kate-swp
 
 ## ghostwrite
 *.md.backup
