@@ -40,34 +40,111 @@ _get_open_command() {
     fi
 
     case $extension in
+        bmp) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
         csv) _first_valid_command \
         'column -ts "," "<path>" | less -S' \
         'less -S "<path>"'
+        ;;
+
+        gif) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        ico) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        jpeg | jpg) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
         ;;
 
         json) _first_valid_command \
         'python3.10 -m json.tool "<path>" | less'
         ;;
 
-        pdf)
-        _first_valid_command \
-        '/usr/bin/evince "<path>" > /dev/null'
+        mkv) _first_valid_command \
+        'vlc "<path>"'
         ;;
 
-        tsv)
-        _first_valid_command \
+        mp3) _first_valid_command \
+        'vlc "<path>"'
+        ;;
+
+        mp4) _first_valid_command \
+        'vlc "<path>"'
+        ;;
+
+        ods) _first_valid_command \
+        'libreoffice "<path>"'
+        ;;
+
+        odt) _first_valid_command \
+        'libreoffice "<path>"'
+        ;;
+
+        pdf) _first_valid_command \
+        '/usr/bin/evince "<path>"'
+        ;;
+
+        png) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        svg) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        tif | tiff) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        tsv) _first_valid_command \
         'column -ts "	" "<path>" | less -S' \
         'less -S "<path>"'
         ;;
 
-        txt)
-        _first_valid_command \
+        txt) _first_valid_command \
         'less "<path>"'
         ;;
 
-        xopp)
-        _first_valid_command \
+        wav) _first_valid_command \
+        'vlc "<path>"'
+        ;;
+
+        webm) _first_valid_command \
+        'vlc "<path>"'
+        ;;
+
+        webp) _first_valid_command \
+        'eog "<path>"'
+        ;;
+
+        xopp) _first_valid_command \
         'xournalpp "<path>"'
+        ;;
+
+        # collection of rare file types of which a way to open them is already known
+        ani | xbm | tga | pnm) _first_valid_command \
+        'eog "<path>"' \
+        'pinta "<path>"'
+        ;;
+
+        icns | jxl | ora | qtif) _first_valid_command \
+        'pinta "<path>"'
+        ;;
+
+        avif | xpm | wbmp | ras | pcx) _first_valid_command \
+        'eog "<path>"'
         ;;
 
         *)
