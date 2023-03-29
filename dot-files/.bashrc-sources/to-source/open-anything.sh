@@ -1,5 +1,22 @@
 #!/bin/bash
 
+_validate_get_open_command_sorting() {
+    path="$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/open-anything.sh"
+    file_is="$(mktemp)"
+    file_ought="$(mktemp)"
+
+    \grep --color=none -E "^\s+[a-z0-9]+) _first_valid_command" "$path" > "$file_is"
+    sort "$file_is" > "$file_ought"
+
+    if ! cmp -s "$file_is" "$file_ought"; then
+        echo "Sorting not as expected. Ought to be:"
+        cat "$file_ought" | \grep -oE "\S+)"
+    fi
+
+    rm "$file_is"
+    rm "$file_ought"
+}
+
 _get_extension() {
     path="$1"
     filename=$(basename -- "$path")
