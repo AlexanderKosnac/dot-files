@@ -5,6 +5,7 @@ python_3_8="/usr/bin/python3.8"
 
 export PATH="${PATH}:/snap/bin"
 export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
 
 # paths
 ## directory for all kinds of scripts
