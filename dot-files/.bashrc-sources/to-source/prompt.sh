@@ -1,6 +1,14 @@
 #!/bin/bash
 
-export A_GIT_PROMPT_TYPE="git-prompt"
+CONFIG_DIRECTORY="${HOME}/.config/prompt/"
+PROMPT_STORAGE_FILE="${CONFIG_DIRECTORY}/prompt_type"
+
+mkdir -p "$CONFIG_DIRECTORY"
+if [ ! -f "$PROMPT_STORAGE_FILE" ]; then
+    echo -n "git-prompt" > "$PROMPT_STORAGE_FILE"
+fi
+
+export A_GIT_PROMPT_TYPE="$(head -n 1 "$PROMPT_STORAGE_FILE")"
 
 git_prompt_type=(
     "basic"
@@ -73,13 +81,17 @@ function relative_root {
     fi
 }
 
-function a_prompt {
+function prompt_select {
     for i in ${!git_prompt_type[@]}; do
         echo "$((i+1)). ${git_prompt_type[$i]}"
     done
     read -p "Select prompt type: " -r num
     case $num in
-        1 | 2 | 3) export A_GIT_PROMPT_TYPE="${git_prompt_type[$((num-1))]}";;
+        1 | 2 | 3)
+        prompt_type_string="${git_prompt_type[$((num-1))]}"
+        export A_GIT_PROMPT_TYPE="$prompt_type_string"
+        echo -n "$prompt_type_string" > "$PROMPT_STORAGE_FILE"
+        ;;
         *) echo "Unhandeled prompt type '${var}'." > /dev/stderr;;
     esac
     __export_prompt
