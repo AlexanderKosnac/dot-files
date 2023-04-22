@@ -66,7 +66,11 @@ _get_open_command() {
         ;;
 
         json) _first_valid_command \
-        'python3.10 -m json.tool "<path>" | less'
+        'python3.10 -m json.tool "<path>" | less' \
+        'python3.9  -m json.tool "<path>" | less' \
+        'python3.8  -m json.tool "<path>" | less' \
+        'python3.6  -m json.tool "<path>" | less' \
+        'python2.7  -m json.tool "<path>" | less'
         ;;
 
         mkv) _first_valid_command \
