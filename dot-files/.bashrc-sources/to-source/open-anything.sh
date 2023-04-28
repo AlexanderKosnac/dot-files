@@ -35,7 +35,8 @@ _get_open_command() {
     is_directory="$2"
     if [ ! -z $is_directory ];  then
         _first_valid_command \
-        'nautilus "<path>"'
+        'nautilus "<path>"' \
+        'explorer.exe "<path>"'
         return
     fi
 
