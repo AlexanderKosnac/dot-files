@@ -16,12 +16,16 @@ git_prompt_type=(
     "with git branch"
 )
 
-def="${S_RESET}"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+def="${S_RESET}${DEF_FG}${DEF_BG}"
 blue="$(color-rgb-fg 0 133 251)"
 yellow="$(color-rgb-fg 255 208 0)"
 red="$(color-rgb-fg 255 110 110)"
 green="$(color-rgb-fg 89 255 114)"
 gray="$(color-rgb-fg 200 200 200)"
+
+venv_color="$(color-rgb 0 0 0 89 255 114)"
 
 p_user="${yellow}\u${def}"
 p_at="${def}@${def}"
@@ -70,6 +74,12 @@ function prompt_exit_code {
     echo -en "$prompt"
 }
 
+function virtual_env_name {
+    if [ ! -z "$VIRTUAL_ENV" ]; then
+        echo " ${venv_color}${VIRTUAL_ENV##*/}${def}"
+    fi
+}
+
 function relative_root {
     repo_path="$(git rev-parse --show-prefix 2> /dev/null)"
     is_git="$?"
@@ -99,7 +109,7 @@ function prompt_select {
 
 function __setprompt {
     ec=$?;  # has to be at top
-    prompt=""  # clear PS1
+    prompt="${def}"  # clear PS1
 
     # user and host
     prompt+="${p_user}${p_at}${p_host} "
@@ -109,6 +119,9 @@ function __setprompt {
 
     # exit code of last command
     prompt+="$(prompt_exit_code $ec)"
+
+	# the name of the active python virtual environment
+    prompt+="$(virtual_env_name)"
 
     prompt+="${p_colon} "
 
@@ -159,3 +172,4 @@ function __export_prompt {
 }
 
 __export_prompt
+
