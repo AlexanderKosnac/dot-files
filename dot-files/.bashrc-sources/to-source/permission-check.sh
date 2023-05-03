@@ -7,21 +7,22 @@ TMP_DIR="$HOME/tmp/$(date +%F)"
 TIMESTAMP_FILE="$TMP_DIR/$(date +%Y-%m-%d)-permission-check"
 
 function _assert-permissions() {
-    file="$1"
+    path="$1"
     expected="$2"
 
-    if [ ! -f "$FILE" ]; then
+    if [ ! -f "$path" ] && [ ! -d "$path" ]; then
+        echo "Checking permissions on '$path', but it does not exist."
         return 0
     fi
 
-    is="$(stat -c %A "$file")"
+    is="$(stat -c %A "$path")"
 
     if [ "$is" = "$expected" ]; then
         return 0
     fi
     {
         echo "Unexpected permissions found:"
-        echo "File:     $file"
+        echo "Path:     $path"
         echo "Expected: $expected"
         echo "But is:   $is"
     } > /dev/stderr
