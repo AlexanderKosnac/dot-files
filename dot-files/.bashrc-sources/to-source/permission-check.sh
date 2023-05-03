@@ -3,7 +3,8 @@
 # Check permissions of specific files and warn if they do not match.
 # Execute on sourcing, but use a timestamp file to only remind once a day.
 
-TIMESTAMP_FILE="/tmp/$(date +%Y-%m-%d)-permission-check"
+TMP_DIR="$HOME/tmp/$(date +%F)"
+TIMESTAMP_FILE="$TMP_DIR/$(date +%Y-%m-%d)-permission-check"
 
 function _assert-permissions() {
     file="$1"
@@ -33,6 +34,7 @@ if [ -f "$TIMESTAMP_FILE" ]; then
     return 0
 fi
 
+mkdir -p "$TMP_DIR"
 touch $TIMESTAMP_FILE
 
 # SSH directory permissions are expected as explained here:
@@ -46,7 +48,7 @@ _assert-permissions "$SSH_ROOT/" "drwx------"
 _assert-permissions "$SSH_ROOT/authorized_keys" "-rw-r--r--"
 _assert-permissions "$SSH_ROOT/known_hosts" "-rw-r--r--"
 
-for key in $(\ls -1 "$SSH_ROOT/"*.pub); do
+for key in $(\find "$SSH_ROOT/" -name "*.pub"); do
     if [[ -L "$key" ]]; then
         continue # ignore links
     fi
