@@ -21,8 +21,6 @@ set ruler
 
 set number
 
-set mouse=a
-
 " set tab width
 set tabstop=4
 set shiftwidth=4
