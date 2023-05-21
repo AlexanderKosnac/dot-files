@@ -10,19 +10,4 @@ repository, while files always redirect to the repository.
 
 ## Usage
 
-Clone the repository into any directory and execute `make install`. Done.
-
-
-## Makefile
-
-### `install`
-
-Installs the files into the home directory.
-
-### `clean`
-
-Removes all links in the home repository pointing to files in this repository.
-
-### `all` (default)
-
-First executes `clean` and then `install`.
+Clone the repository into any directory and execute `make`. Done.
