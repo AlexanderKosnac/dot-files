@@ -26,6 +26,7 @@ green="$(color-rgb-fg 89 255 114)"
 gray="$(color-rgb-fg 200 200 200)"
 
 venv_color="$(color-rgb 0 0 0 89 255 114)"
+conda_color="$(color-rgb 255 255 255 67 176 42)"
 
 p_user="${yellow}\u${def}"
 p_at="${def}@${def}"
@@ -80,6 +81,12 @@ function virtual_env_name {
     fi
 }
 
+function conda_env_name {
+    if [ ! -z "$CONDA_DEFAULT_ENV" ] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+        echo " ${conda_color}${CONDA_DEFAULT_ENV}${def}"
+    fi
+}
+
 function relative_root {
     repo_path="$(git rev-parse --show-prefix 2> /dev/null)"
     is_git="$?"
@@ -122,6 +129,9 @@ function __setprompt {
 
 	# the name of the active python virtual environment
     prompt+="$(virtual_env_name)"
+
+    # the name of the active conda environment
+    prompt+="$(conda_env_name)"
 
     prompt+="${p_colon} "
 
