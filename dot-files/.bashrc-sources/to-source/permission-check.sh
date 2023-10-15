@@ -47,7 +47,7 @@ _assert-permissions "$HOME/" "drwx------"
 SSH_ROOT="$HOME/.ssh"
 _assert-permissions "$SSH_ROOT/" "drwx------"
 _assert-permissions "$SSH_ROOT/authorized_keys" "-rw-r--r--"
-_assert-permissions "$SSH_ROOT/known_hosts" "-rw-r--r--"
+_assert-permissions "$SSH_ROOT/known_hosts" "-rw-------"
 
 for key in $(\find "$SSH_ROOT/" -name "*.pub"); do
     if [[ -L "$key" ]]; then
