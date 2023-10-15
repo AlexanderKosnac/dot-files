@@ -80,3 +80,49 @@ function all-colors() {
         done
     done
 }
+
+function invert-rgb() {
+    local r=$1
+    local g=$2
+    local b=$3
+
+    printf "%d %d %d" $((255 - r)) $((255 - g)) $((255 - $b))
+}
+
+function hex2rgb() {
+    hex="$1"
+    printf "%d %d %d" 0x${hex:0:2} 0x${hex:2:2} 0x${hex:4:2}
+}
+
+function hsv2rgb() {
+    local h=$1
+    local s=$2
+    local v=$3
+
+    hi="$((h / 60))"
+    f="$(bc -l <<< "($h / 60) - $hi")"
+
+    p="$(bc -l <<< "$v * (1-$s)")"
+    q="$(bc -l <<< "$v * (1-($s*$f))")"
+    t="$(bc -l <<< "$v * (1-($s*(1-$f)))")"
+
+    local r=0
+    local g=0
+    local b=0
+
+    case $hi in
+    0) r="$v";  g="$t";  b="$p" ;;
+    1) r="$q";  g="$v";  b="$p" ;;
+    2) r="$p";  g="$v";  b="$t" ;;
+    3) r="$p";  g="$q";  b="$v" ;;
+    4) r="$t";  g="$p";  b="$v" ;;
+    5) r="$v";  g="$p";  b="$q" ;;
+    *) r="-1";  g="-1";  b="-1" ;;
+    esac
+
+    r="$(bc -l <<< "$r*255")"
+    g="$(bc -l <<< "$g*255")"
+    b="$(bc -l <<< "$b*255")"
+
+    echo "${r%.*} ${g%.*} ${b%.*}"
+}

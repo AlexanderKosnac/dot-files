@@ -25,12 +25,23 @@ red="$(color-rgb-fg 255 110 110)"
 green="$(color-rgb-fg 89 255 114)"
 gray="$(color-rgb-fg 200 200 200)"
 
+function hash_based_color {
+    hash="$(echo "$1" | md5sum)"
+    hash_value="$(printf "scale=0;360 * %d/16^4\n" 0x${hash:0:4} | bc -l)"
+    hash_color="$(hsv2rgb "$hash_value" 0.4 0.99)"
+    echo "$(color-rgb 0 0 0 $hash_color)"
+}
+
+user_color="$(hash_based_color "$USER")"
+host_color="$(hash_based_color "$(hostname)")"
+at_color="$(color-rgb 0 0 0 240 240 240)"
+
 venv_color="$(color-rgb 0 0 0 89 255 114)"
 conda_color="$(color-rgb 255 255 255 67 176 42)"
 
-p_user="${yellow}\u${def}"
-p_at="${def}@${def}"
-p_host="${green}\H${def}"
+p_user="${user_color}\u${def}"
+p_at="${at_color}@${def}"
+p_host="${host_color}\H${def}"
 p_time="${gray}\t${def}"
 p_colon="${def}:${def}"
 
@@ -127,7 +138,7 @@ function __setprompt {
     # exit code of last command
     prompt+="$(prompt_exit_code $ec)"
 
-	# the name of the active python virtual environment
+    # the name of the active python virtual environment
     prompt+="$(virtual_env_name)"
 
     # the name of the active conda environment
