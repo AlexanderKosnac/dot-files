@@ -120,7 +120,7 @@ function prompt_select {
         export A_GIT_PROMPT_TYPE="$prompt_type_string"
         echo -n "$prompt_type_string" > "$PROMPT_STORAGE_FILE"
         ;;
-        *) echo "Unhandeled prompt type '${var}'." > /dev/stderr;;
+        *) echo "Unhandled prompt type '${var}'." > /dev/stderr;;
     esac
     __export_prompt
 }

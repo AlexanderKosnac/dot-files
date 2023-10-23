@@ -12,7 +12,7 @@ fi
 # use git.exe, when operating on the C: mount.
 # Taken from: https://markentier.tech/posts/2020/10/faster-git-under-wsl2/
 function git() {
-  if $(pwd -P | grep -q "^\/mnt\/c\/*"); then
+  if $(pwd -P | grep -q "^/mnt/c/*"); then
     git.exe "$@"
   else
     command git "$@"
