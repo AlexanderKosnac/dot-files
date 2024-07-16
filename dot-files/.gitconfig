@@ -3,6 +3,7 @@
 	name = Alexander Kosnac
 [core]
 	editor = vim
+	autocrlf = input
 [alias]
 	unstage = reset HEAD --
 	root = rev-parse --show-toplevel
