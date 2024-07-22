@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Only applied when used in Windows Subsystem for Linux (WSL)
+if [ ! -f /proc/version ]; then
+    return
+fi
 
 # check if we are inside WSL
 grep -iq "microsoft" /proc/version
