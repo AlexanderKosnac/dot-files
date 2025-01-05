@@ -7,3 +7,5 @@
 [alias]
 	unstage = reset HEAD --
 	root = rev-parse --show-toplevel
+[init]
+	defaultBranch = master
